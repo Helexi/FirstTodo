@@ -1,0 +1,26 @@
+.block {
+    text-align: center;
+    margin: 100px;
+}
+
+.my-todo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.field {
+    border: none;
+    border-bottom: 1px solid;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+.succsess {
+    text-decoration: line-through;
+}
+
+.task {
+    display: flex;
+    justify-content: center;
+}
