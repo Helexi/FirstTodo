@@ -1,55 +1,48 @@
 const field = document.querySelector('.field');
-const button = document.querySelector('.add');
-const list = document.querySelector('.list');
-let id = 1;
+const button1 = document.querySelector('.add');
+let list = document.querySelector('.list');
+const total = document.querySelector('.total_value');
+const deleteAll = document.querySelector('.delete_all')
 
-function createTask(value) {
-    const task = document.createElement('div');
-    task.innerHTML = value;
-    task.classList.add('task');
-    task.id = id;
-    id++;
-    creaeCheckBox(task);
-    createIcon(task);
-    return task;
-}
-
-function createIcon(task) {
-    const deleteIcon = document.createElement('div');
-    deleteIcon.classList.add('del')
-    deleteIcon.innerHTML = '&#10060;';
-    deleteIcon.addEventListener('click', deleteTask);
-    task.appendChild(deleteIcon);
-}
-
-function deleteTask(event) {
-    document.getElementById(event.target.parentElement.id).remove();
-}
-
-function creaeCheckBox(task) {
-    const check = document.createElement('input');
-    check.type = 'checkbox';
-    check.addEventListener('click', completeTask);
-    check.classList.add('status');
-    task.appendChild(check);
-}
-
+let totalArrey = [];
 
 
 function addTask() {
-    if (field.value) {
-        const plus = createTask(field.value);
-        list.appendChild(plus);
-        field.value = "";
-    }
+    createElemrnts(field.value);
+    field.value = "";
 }
 
-function completeTask(event) {
-    console.log(event);
-    const target = event.target;
-    if (target.checked) {
-        target.parentElement.classList.add("succsess");
-    } else { target.parentElement.classList.remove("succsess"); }
+function createElemrnts(value) {
+    if (value === "") return;
+    const task = document.createElement('div');
+    task.className = 'task';
+    task.textContent = value;
+    list.appendChild(task);
+
+    const btn = document.createElement('button');
+    btn.className = 'btn';
+    btn.textContent = 'delete';
+    task.appendChild(btn);
+
+    btn.addEventListener('click', () => {
+        totalArrey.pop(task);
+        total.textContent = totalArrey.length;
+        list.removeChild(task);
+    })
+
+    task.addEventListener('click', () => {
+        task.classList.toggle('active');
+    })
+    totalArrey.push(task);
+    console.log(totalArrey.length);
+    total.textContent = totalArrey.length;
+
+
 }
 
-button.addEventListener('click', addTask)
+function del_all(list) {
+    list.rmeove(task);
+}
+
+deleteAll.addEventListener('click', del_all);
+button1.addEventListener('click', addTask)
