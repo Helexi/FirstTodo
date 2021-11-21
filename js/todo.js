@@ -40,8 +40,10 @@ function createElemrnts(value) {
 
 }
 
-function del_all(list) {
-    list.rmeove(task);
+function del_all() {
+    list.innerHTML = "";
+    totalArrey.length = 0;
+    total.textContent = totalArrey.length;
 }
 
 deleteAll.addEventListener('click', del_all);
