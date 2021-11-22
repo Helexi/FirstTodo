@@ -38,14 +38,17 @@ body {
     margin-bottom: 10px;
 }
 
-.add {
+.add,
+.delete_all {
+    cursor: pointer;
     background-color: burlywood;
     padding: 0px 10px 0px 10px;
     border-radius: 10px;
 }
 
 .add:hover,
-.btn:hover {
+.btn:hover,
+.delete_all:hover {
     background-color: brown;
 }
 
@@ -72,4 +75,8 @@ body {
 
 .list {
     display: inline-block;
+}
+
+.total {
+    padding-bottom: 20px;
 }
